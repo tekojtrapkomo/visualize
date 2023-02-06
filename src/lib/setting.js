@@ -1,3 +1,7 @@
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('https://hissing-machine.pockethost.io');
+
 
 export const serializeNonPOJOs = (obj) => {
 	return structuredClone(obj);

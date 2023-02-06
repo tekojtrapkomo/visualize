@@ -1,10 +1,14 @@
 import { error, redirect } from '@sveltejs/kit';
 import { serializeNonPOJOs } from '$lib/setting';
 
+
  export const load = ({ locals, params }) => {
 	const getTopic = async () => {
 		try {
-			const topic = serializeNonPOJOs(await locals.pb.collection('topic').getOne('dljwif9pjtmka5o'));
+			const topic = serializeNonPOJOs(await locals.pb.collection('topic').getFullList(200 /* batch size */, {
+				sort: '-created',
+			}));
+			console.log(topic)
 			return topic;
 		} catch (err) {
 			console.log('Error: ', err);
@@ -12,7 +16,7 @@ import { serializeNonPOJOs } from '$lib/setting';
 		}
 	};
 	return {
-		topic: getTopic(params.collectionId)
+		topic: getTopic()
 	};
 };
 export const actions = {
