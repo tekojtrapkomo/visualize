@@ -36,7 +36,7 @@
 			<label for="password">
 				<span class="label-text">Password</span>
 			</label>
-			<input type="password" name="password" class="input input-bordered w-full max-w-md" />
+			<input type="password" autocomplete="on" name="password" class="input input-bordered w-full max-w-md" />
 			<button type="submit" class="btn btn-primary w-full">Login</button>
       {#if form?.notVerified}
         <p>Please verify your email</p>
@@ -57,7 +57,7 @@
             <input type="text" name="instagram" placeholder="Enter your instagram" />
           </label>
           <label for="password">
-            <input type="password" name="password" placeholder="Password" />
+            <input type="password" autocomplete="on" name="password" placeholder="Password" />
           </label>
           <label for="passwordConfirm">
             <input type="password" name="passwordConfirm" placeholder="Password" />

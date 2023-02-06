@@ -2,23 +2,34 @@ import { error, redirect } from '@sveltejs/kit';
 import { serializeNonPOJOs } from '$lib/setting';
 
 
- export const load = ({ locals, params }) => {
+ export const load = ({ locals }) => {
 	const getTopic = async () => {
 		try {
 			const topic = serializeNonPOJOs(await locals.pb.collection('topic').getFullList(200 /* batch size */, {
-				sort: '-created',
+				sort: '-created	',
 			}));
-			console.log(topic)
 			return topic;
 		} catch (err) {
 			console.log('Error: ', err);
 			throw error(err.status, err.message);
 		}
 	};
-	return {
-		topic: getTopic()
-	};
+	const getGallery = async () => {
+		try {
+			const gallery = serializeNonPOJOs(await locals.pb.collection('gallery').getFullList(200 /* batch size */,{
+				expand: 'topicse,user'
+			}));
+			return gallery;
+		} catch (err) {
+			console.log('Error: ', err);
+			throw error(err.status, err.message);
+		}
 };
+return {
+	topic: getTopic(),
+	gallery: getGallery()
+};
+ };
 export const actions = {
         register: async ({ locals, request }) => {
 		const body = Object.fromEntries(await request.formData());
@@ -52,7 +63,6 @@ export const actions = {
 			throw error(500, 'Something went wrong logging in');
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, '/submit');
 	}
 };
-
