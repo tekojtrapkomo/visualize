@@ -1,8 +1,6 @@
 import { error, redirect } from '@sveltejs/kit';
 import { serializeNonPOJOs } from '$lib/setting';
-
-
- export const load = ({ locals }) => {
+export const load = ({ locals }) => {
 	const getTopic = async () => {
 		try {
 			const topic = serializeNonPOJOs(await locals.pb.collection('topic').getFullList(200 /* batch size */, {

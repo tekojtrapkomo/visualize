@@ -1,41 +1,65 @@
 import { error, invalid, redirect } from '@sveltejs/kit';
+import { serializeNonPOJOs } from '$lib/setting.js';
 
 export const load = ({ locals }) => {
 	if (!locals.pb.authStore.isValid) {
 		throw redirect(303, '/');
-	}
+	};
+	const getTopic = async () => {
+			try {
+				const topic = serializeNonPOJOs(await locals.pb.collection('topic').getFullList(200 /* batch size */, {
+					sort: '-created	',
+				}));
+				return topic;
+			} catch (err) {
+				console.log('Error: ', err);
+				throw error(err.status, err.message);
+			}
+		};
+		const getGallery = async () => {
+			try {
+				const gallery = serializeNonPOJOs(await locals.pb.collection('gallery').getFullList(200 /* batch size */,{
+					expand: 'topicse,user'
+				}));
+				return gallery;
+			} catch (err) {
+				console.log('Error: ', err);
+				throw error(err.status, err.message);
+			}
+	};
+	return {
+		topic: getTopic(),
+		gallery: getGallery()
+	};
 };
 
 
 
 export const actions = {
-	create: async ({ request, locals }) => {
-		const body = await request.formData();
+	create: async ({ locals, request }) => {
+		const formData = await request.formData();
+		const submission = formData.get('submission');
 
-		const thumb = body.get('thumbnail');
-
-		if (thumb.size === 0) {
-			body.delete('thumbnail');
-		}
-		body.append('user', locals.user.id);
-
-		const { formData, errors } = await validateData(body, createProjectSchema);
-		const { thumbnail, ...rest } = formData;
-
-		if (errors) {
-			return invalid(400, {
-				data: rest,
-				errors: errors.fieldErrors
-			});
+		if (submission.length === 0) {
+			return invalid('No submission provided');
 		}
 
+		// try {
+		// 	const topicse = await locals.pb.collection('topic').get(topicse);
+		// 	formData.append('topicse', data.topic.topicshow);
+		// } catch (err) {
+		// 	console.log(err);
+		// 	throw error(err.status, err.message);
+		// }
+
+		formData.append('user', locals.user.id);
 		try {
-			await locals.pb.collection('gallery').create(serialize(formData));
+			await locals.pb.collection('gallery').create(formData);
 		} catch (err) {
-			console.log('Error: ', err);
+			console.log(err);
 			throw error(err.status, err.message);
 		}
 
-		throw redirect(303, '/my/projects');
-	}
+		throw redirect(303, '/explore');
+}
 };

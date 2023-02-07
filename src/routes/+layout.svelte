@@ -1,9 +1,7 @@
 <script>
     import '../app.css'
-    import Login from './login.svelte';
+    import Login from '$lib/login.svelte';
     let showModal = { showmodalLogin: false };
-    import { getImageURL } from '$lib/setting.js';
-
     const handleLoginClick = () => {
         showModal.showmodalLogin = !showModal.showmodalLogin;
     };
@@ -22,13 +20,11 @@
     <button type="submit" class="w-full text-start">Logout</button>
 </form>
 </div>
+<div>
+    <a href="/submit">Submit</a>
+</div>
 <div class="user-profile">
-        <a href="/profile"><img
-            src={data.user?.avatar
-                ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar)
-                : `https://ui-avatars.com/api/?name=${data.user?.name}`}
-            alt="User avatar"
-        /></a>
+        <a href="/profile">{data.user.username}</a>
     </div>
 {/if}
 
