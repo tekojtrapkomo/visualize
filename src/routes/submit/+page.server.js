@@ -43,15 +43,6 @@ export const actions = {
 		if (submission.length === 0) {
 			return invalid('No submission provided');
 		}
-
-		// try {
-		// 	const topicse = await locals.pb.collection('topic').get(topicse);
-		// 	formData.append('topicse', data.topic.topicshow);
-		// } catch (err) {
-		// 	console.log(err);
-		// 	throw error(err.status, err.message);
-		// }
-
 		formData.append('user', locals.user.id);
 		try {
 			await locals.pb.collection('gallery').create(formData);
