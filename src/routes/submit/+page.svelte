@@ -38,7 +38,7 @@ SUBMIT YOUR <span>ARTWORK</span>
 <div>
 <p>This week's topic: <strong>{data.topic[0].topicshow}</strong></p>
 <div id="countdown">
-    <Countdown/>
+    <Countdown content="submit"/>
 </div>
 </div>
 {#if sunday < now}

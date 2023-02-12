@@ -1,4 +1,5 @@
 <script>
+    import { animate, stagger, scroll, inView } from "motion";
 export const instagramURL = (instagram) => {
     return `https://www.instagram.com/${instagram}`;
 }
@@ -6,40 +7,63 @@ export let data;
 export const imgURL = (collectionId, id, submission) => {
     return `https://hissing-machine.pockethost.io/api/files/${collectionId}/${id}/${submission}`;
 }
+export const imgURLONE = (collectionId, id, bg) => {
+    return `https://hissing-machine.pockethost.io/api/files/${collectionId}/${id}/${bg}`;
+}
+import Countdown from "$lib/countdown.svelte";
+import Login from '$lib/login.svelte';
+	import { onMount } from "svelte";
 
-// let selected = 'all';
-// const filterSelection = (e) => selected = e.target.dataset.name;
+    let showModal = {showmodalLogin: false};
+    const handleLoginClick = () => {
+        showModal.showmodalLogin = !showModal.showmodalLogin;
+    };
+
+    onMount(() => {
+        animate('.topicoe', {opacity: [0, 1], y: [-20, 1]},{duration: 1})
+
+        inView(".wq", () => {
+            animate('.card', {opacity: [0, 1]},{delay: stagger(0.4), duration: 1})
+        });
+    });
+
+
 </script>
 
 <svelte:head>
     <title>VISUALIZE | EXPLORE</title>
 </svelte:head>
-<div >
-    <h1>explore page</h1>
-    <p>This week's topic - <strong>{data.topic[0].topicshow}</strong></p>
+
+<div class="wrapper-explore">
+    <p class="topicoe">{data.topic[0].topicshow}</p>
+    <div class="countdown">
+        <Countdown content="explore"/>
+    </div>
     {#if !data.user}
-    <form action="?/login" method="POST">
-        <button type="submit">SUBMIT YOUR WORK HERE</button>
-    </form>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div on:click|stopPropagation={handleLoginClick} class="login-modal">SUBMIT YOUR WORK HERE</div>
     {:else}
-    <a href="/submit">SUBMIT YOUR WORK HERE</a>
+    <a href="/submit" class="submit">SUBMIT YOUR WORK HERE</a>
     {/if}
+    <div class="bg-image" style="background: url({imgURLONE(data.topic[0]?.collectionId, data.topic[0]?.id, data.topic[0]?.bg)});         background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;"></div>
 </div>
 <div class="black-seminole">
-<div class="ww">
-    <p>ALL TOPICS</p>
+    <div class="ww-main">
+<aside class="ww">
+    <p class="samesh">ALL TOPICS</p>
     {#each data.topic as topics}
-        <ul>
+        <ul style="background-color: {topics.color};">
             <li>{topics.topicshow}</li> 
         </ul>
     {/each}
+    </aside>
 </div>
-
-
-
-    <div class="wq" style="background-color: aqua;">
+<div class="wq-main">
+    <div class="wq" data-lenis-prevent>
     {#each data.gallery as gallery}
-        <div>
+        <div class="card">
             <img class="img" src={imgURL(gallery?.collectionId,gallery?.id, gallery?.submission)} alt="{gallery.title} by {gallery.user}">
             <h2>{gallery.title}</h2>
             <p>{gallery.description}</p>
@@ -49,26 +73,96 @@ export const imgURL = (collectionId, id, submission) => {
     {/each}
 </div>  
 </div>
+</div>
+<Login show = {showModal.showmodalLogin} />
 <style>
     .img {
-        max-width: 30%;
+        max-width: 100%;
         object-fit: cover;
     }
 
     .black-seminole {
         display: flex;
         flex-direction: row;
-        justify-content: space-between; 
     }
     .wq {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
+        background-color: #121212;
+        color: whitesmoke;
+        width: 80%;
+        margin: auto;
+    }
+    .wq-main{
+        background-color: #121212;
     }
     .ww {
         display: flex;
         flex-direction: column;
-        justify-content: space-between; 
+        justify-content: center; 
         align-items: center;
+        color: whitesmoke;
+        font-family: 'Cabinet-Reg', sans-serif;
+        position: sticky;
+        top: 0%;
+        padding-top: 10px;
+        height: 100vh;
+        flex-basis: calc(100% - 400px - 60px);
+        flex-grow: 1;
     }
+    .samesh{
+        border: 1px solid whitesmoke;
+        background-color: greenyellow;
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+        color: #121212;
+    }
+    .ww ul{
+        list-style: none;
+        border: 1px solid whitesmoke;
+        padding: 0.5rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .ww-main{
+        background-color: #121212;
+    }
+    .wrapper-explore{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 70vh;
+        user-select: none;
+        color: whitesmoke;
+        background-size: cover;
+        background-position: top;
+    }
+    .bg-image{
+        height: 70vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        filter: brightness(0.5);
+    }
+    .topicoe{
+        font-family: 'n27', sans-serif;
+        font-size: 1rem;
+        font-size: clamp(1rem, 0rem + 5vw, 6rem);
+        text-transform: uppercase;
+        background-color: #121212;
+        padding: 0.5rem 2rem;
+        letter-spacing: clamp (-5px, 0rem + 5vw, -10px);
+    }
+    .countdown{
+        font-family: 'Cabinet-Reg', sans-serif;
+        font-size: 1rem;
+        font-size: clamp(1rem, 0.8rem + 1vw, 2rem);
+        text-transform: uppercase;
+        font-weight: lighter;
+    }
+
 </style>

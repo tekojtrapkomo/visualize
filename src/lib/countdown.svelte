@@ -1,4 +1,5 @@
 <script>
+    export let content;
     let days = 0;
     let hours = 0;
     let minutes = 0;
@@ -18,4 +19,10 @@
     setInterval(countDown, 1000);
 </script>
 
+{#if content === "submit"}
 <p>Time left to submit: <strong>{days}d {hours}h {minutes}m {seconds}s</strong></p>
+{/if}
+
+{#if content === "explore"}
+<p>Next topic in: <strong>{days}d {hours}h {minutes}m {seconds}s</strong></p>
+{/if}
