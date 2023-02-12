@@ -1,4 +1,4 @@
-import { error, invalid, redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { serializeNonPOJOs } from '$lib/setting.js';
 
 export const load = ({ locals }) => {
@@ -41,7 +41,7 @@ export const actions = {
 		const submission = formData.get('submission');
 
 		if (submission.length === 0) {
-			return invalid('No submission provided');
+			return error('No submission provided');
 		}
 		formData.append('user', locals.user.id);
 		try {
