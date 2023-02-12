@@ -20,18 +20,22 @@
 
     const btnsHover = (e) => {
         btns = e.target;
-        animate(btns, {scale: 1.08, zIndex: 55, border: '1px solid whitesmoke'},{duration: 0.3,easing: "ease-in-out" }
+        animate(btns, {scale: 1.08, zIndex: 55, cursor: 'pointer'},{duration: 0.2,easing: "ease" }
     )};
 
     const btnsHoverOut = (e) => {
         btns = e.target;
-        animate(btns, {scale: 1, zIndex: 0, border: 'none'},{duration: 0.3, easing: "ease-in-out" }
+        animate(btns, {scale: 1, zIndex: 0},{duration: 0.15, easing: "ease" }
     )};
+
 </script>
 <svelte:head>
-    <title>VISUALIZE | HOME</title>
+    <title>Visualize | Home</title>
 </svelte:head>
+
 <section id="home">
+
+    <div class="background-trail"></div>
     <div class="homeo">
         <div class="greeting">
 {#if data.user}
@@ -60,9 +64,9 @@
 <div class="sticker1">
     <img on:mouseenter|preventDefault={iconHover} on:mouseleave|preventDefault={iconHoverOut} src="/11.svg" alt="Sticker">
 </div>
-<div class="bg-grid"></div>
 </section>
 <style>
+    
     .sticker1{
         position: absolute;
         bottom: 20px;
@@ -70,6 +74,7 @@
         transform: scaleY(0.5);
         user-select: none;
         cursor: pointer;
+        z-index: 2;
     }
 
     .homeo{
@@ -79,7 +84,7 @@
         justify-content: center;
         height: 100vh;
         width: 100%;
-        background-color: #151515;
+        background-color: #121212;
         user-select: none;
         overflow: hidden;
     }
@@ -87,7 +92,7 @@
         font-family: 'Grotesk-Bold', sans-serif;
         font-size: 2rem;
         font-size: clamp(2rem, 1.1rem + 4.5vw, 6.5rem);
-        color: white;
+        color: #f0ebe4;
         z-index: 2;
         text-transform: uppercase;
         display: flex;
@@ -103,6 +108,8 @@
         font-size: 2rem;
         text-transform: uppercase;
         height: 40px;
+        border: 1px solid #151515;
+
     }
     .exploring{
         background-color: greenyellow;
@@ -113,6 +120,7 @@
         text-transform: uppercase;
         height: 40px;
         flex-grow: 1;
+        border: 1px solid #151515;
     }
     .headline{
         background-color: gold;
@@ -123,6 +131,7 @@
         text-transform: uppercase;
         flex-grow: 1;
         height: 40px;
+        border: 1px solid #151515;
     }
     .headline1{
         background-color: hotpink;
@@ -133,8 +142,9 @@
         text-transform: uppercase;
         height: 40px;
         flex-grow: 1;
-
+        border: 1px solid #151515;
     }
+
     .login{
         display: flex;
         width: 60%;
@@ -145,6 +155,7 @@
         gap: 10px;
         text-align: center;
         margin: 5px 0;
+        z-index: 2;
     }
     .greeting{
         width: 60%;
@@ -152,10 +163,5 @@
         justify-content: center;
         align-items: center;
     }
-    .name-gradient{
-        background: linear-gradient(to left, #76b1ff, #40f2ec, #add2ed, #ffb2ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    background-size: 150% 150%;
-    }
+
 </style>

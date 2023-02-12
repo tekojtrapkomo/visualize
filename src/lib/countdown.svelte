@@ -20,9 +20,20 @@
 </script>
 
 {#if content === "submit"}
-<p>Time left to submit: <strong>{days}d {hours}h {minutes}m {seconds}s</strong></p>
+<p class="pp">Time left to submit: {days}d {hours}h {minutes}m {seconds}s</p>
 {/if}
 
 {#if content === "explore"}
-<p>Next topic in: <strong>{days}d {hours}h {minutes}m {seconds}s</strong></p>
+<p class="pp">Next topic in:{days}d {hours}h {minutes}m {seconds}s</p>
 {/if}
+
+<style>
+    .pp {
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 1rem 0;
+        font-family: 'Grotesk-Reg', sans-serif;
+        letter-spacing: 1px;
+    }
+</style>

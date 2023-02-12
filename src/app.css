@@ -1,8 +1,12 @@
+:root{
+  --off-white: #f0ebe4;
+  --dark-gray: #151515;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: initial;
         /* Adjust font size */
         font-size: 100%;
         -webkit-text-size-adjust: 100%;
@@ -12,7 +16,6 @@
         /* Smoothing */
         text-rendering: optimizeLegibility;
         -moz-osx-font-smoothing: grayscale;
-        font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
         text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
   }
@@ -20,23 +23,21 @@
   a, .login-modal {
     text-decoration: none;
     font-family: 'Grotesk-Bold', sans-serif;
-    color: whitesmoke;
   }
-
 @font-face {
   font-family: 'Grotesk-Medium';
   src: url('$lib/fonts/CabinetGrotesk-Medium.woff2') format('woff2');
 }
   @font-face {
-    font-family: Grotesk-Bold;
+    font-family: 'Grotesk-Bold';
     src: url('$lib/fonts/CabinetGrotesk-Bold.woff2') format('woff2');
   }
   @font-face {
-    font-family: Grotesk-Reg;
+    font-family: 'Grotesk-Reg';
     src: url('$lib/fonts/CabinetGrotesk-Regular.woff2') format('woff2');
   }
   @font-face {
-    font-family: Grotesk-Light;
+    font-family: 'Grotesk-Light';
     src: url('$lib/fonts/CabinetGrotesk-Light.woff2') format('woff2');
   }
   @font-face {

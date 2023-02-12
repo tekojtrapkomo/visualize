@@ -76,7 +76,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   /* background-color: rgba(0, 0, 0, 0.6); */
-  background: rgba(12, 12, 12, 0.452); border: 0.5px solid rgba(255, 255, 255, 0.219); -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px);
+  background: rgba(0, 0, 0, 0.596); border: 0.5px solid rgba(255, 255, 255, 0.219); -webkit-backdrop-filter: blur(50px); backdrop-filter: blur(50px);
   display: flex;
   border-radius: 20px;
   justify-content: center;
@@ -134,7 +134,7 @@
   background: none;
   outline: none;
   border: none;
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid rgb(107, 107, 107);
   font-size: 24px;
   padding: 0.4em;
   width: 100%;
