@@ -61,9 +61,9 @@
     </p>
 </div>
 </div>
-<div class="sticker1">
+<object aria-label="sticker1" class="sticker1">
     <img on:mouseenter|preventDefault={iconHover} on:mouseleave|preventDefault={iconHoverOut} src="/11.svg" alt="Sticker">
-</div>
+</object>
 </section>
 <style>
     
@@ -71,10 +71,10 @@
         position: absolute;
         bottom: 20px;
         right: 20px;
-        transform: scaleY(0.5);
         user-select: none;
         cursor: pointer;
         z-index: 2;
+        transform: scale(0.2);
     }
 
     .homeo{
@@ -98,7 +98,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-wrap: nowrap;
     }
     .gologin{
         background-color: lightcoral;
