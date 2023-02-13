@@ -20,7 +20,7 @@
 </script>
 
 {#if content === "submit"}
-<p class="pp">Time left to submit: {days}d {hours}h {minutes}m {seconds}s</p>
+<p class="ppp">Time left to submit: {days}d {hours}h {minutes}m {seconds}s</p>
 {/if}
 
 {#if content === "explore"}
@@ -32,6 +32,12 @@
         font-size: 1.5rem;
         color: #fff;
         text-align: center;
+        margin: 1rem 0;
+        font-family: 'Grotesk-Reg', sans-serif;
+        letter-spacing: 1px;
+    }
+    .ppp {
+        font-size: 1.5rem;
         margin: 1rem 0;
         font-family: 'Grotesk-Reg', sans-serif;
         letter-spacing: 1px;

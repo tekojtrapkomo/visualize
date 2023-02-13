@@ -106,4 +106,8 @@
     font-family: 'Grotesk-Bold', sans-serif;
     color: #f0ebe4;
 }
+
+.user-profile{
+    text-transform: capitalize;
+}
 </style>

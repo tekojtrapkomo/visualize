@@ -93,7 +93,7 @@
         justify-content: center;
         height: 100vh;
         width: 100%;
-        background-color: #121212;
+        background-color: #151515;
         user-select: none;
         overflow: hidden;
     }
@@ -171,5 +171,4 @@
         justify-content: center;
         align-items: center;
     }
-
 </style>
