@@ -6,12 +6,13 @@
     onMount(()=>{
         animate('.sticker1', {opacity: [0, 1], y: [-20, 0]},{duration: 1, transformOrigin: '50% 50%'}
 		)
-        animate('.login', {opacity: [0, 1], y: [100, 0]},{duration: 0.9, delay: stagger(0.3)})
+        animate('.login', {opacity: [0, 1], y: [100, 0]},{duration: 0.9, delay: stagger(0.3)});
+        animate('.background-trail', {opacity: [0, 0.5]},{duration: 0.9, delay: 0.5});
     })
 
     const iconHover = () => {
         animate('.sticker1', {y: -20},{duration: 1 }
-    )};
+            )};
     const iconHoverOut = () => {    
         animate('.sticker1', {y: 0},{duration: 1 }
     )}; 
@@ -62,11 +63,32 @@
 </div>
 </div>
 <object aria-label="sticker1" class="sticker1">
-    <img on:mouseenter|preventDefault={iconHover} on:mouseleave|preventDefault={iconHoverOut} src="/11.svg" alt="Sticker">
+    <img on:mouseenter|preventDefault={iconHover} on:mouseleave|preventDefault={iconHoverOut} src="/11.svg" alt="Sticker" width="250" height="250">
 </object>
 </section>
 <style>
-    
+        .background-trail{
+        background: linear-gradient(45deg,
+        hsl(194, 100%, 50%) 0%,
+        hsl(180, 100%, 50%) 11%,
+        hsl(199, 100%, 27%) 22%,
+        hsl(329deg 100% 36%) 33%,
+        hsl(337deg 100% 43%) 44%,
+        hsl(357deg 91% 59%) 56%,
+        hsl(17deg 100% 59%) 67%,
+        hsl(34deg 100% 53%) 78%,
+        hsl(45deg 100% 50%) 89%,
+        hsl(55deg 100% 50%) 100%
+    );
+        opacity: 1; filter: blur(100px) brightness(2); border-radius: 9999px;
+        height:50vh;
+        width: 70vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) skew(10deg, 0deg);
+        pointer-events: none;
+    } 
     .sticker1{
         position: absolute;
         bottom: 20px;
@@ -74,7 +96,6 @@
         user-select: none;
         cursor: pointer;
         z-index: 2;
-        transform: scale(0.2);
     }
 
     .homeo{

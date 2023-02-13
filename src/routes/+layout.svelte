@@ -45,7 +45,6 @@
 </div>
 
 </nav>
-<div class="rainbow"></div>
 </Headroom>
 
 {#if !data.user}
@@ -54,47 +53,13 @@
 <slot/>
 
 <style>
-            .rainbow{
-        background: linear-gradient(
-  45deg,
-  hsl(194, 100%, 50%) 0%,
-  hsl(180, 100%, 50%) 11%,
-  hsl(199, 100%, 27%) 22%,
-  hsl(329deg 100% 36%) 33%,
-  hsl(337deg 100% 43%) 44%,
-  hsl(357deg 91% 59%) 56%,
-  hsl(17deg 100% 59%) 67%,
-  hsl(34deg 100% 53%) 78%,
-  hsl(45deg 100% 50%) 89%,
-  hsl(55deg 100% 50%) 100%
-);
-
-    background-size: 150% 150%;
-    -webkit-animation: gradient 6s ease infinite;
-    -moz-animation: gradient 6s ease infinite;
-    animation: gradient 6s ease infinite;
-    height: 4px;
-    }
-    @-webkit-keyframes gradient {
-    0%{background-position:0% 37%}
-    50%{background-position:100% 200%}
-    100%{background-position:0% 37%}
-}
-@-moz-keyframes gradient {
-    0%{background-position:0% 37%}
-    50%{background-position:100% 64%}
-    100%{background-position:0% 37%}
-}
-@keyframes gradient {
-    0%{background-position:0% 37%}
-    50%{background-position:100% 64%}
-    100%{background-position:0% 37%}
-}
     .logout{
         background: none;
         cursor: pointer;
         text-decoration: none;
         font-family: 'Grotesk-Bold', sans-serif;
+        color: #f0ebe4;
+
     }
     nav{
         display: flex;
