@@ -68,18 +68,6 @@
 </section>
 <style>
         .background-trail{
-        background: linear-gradient(45deg,
-        hsl(194, 100%, 50%) 0%,
-        hsl(180, 100%, 50%) 11%,
-        hsl(199, 100%, 27%) 22%,
-        hsl(329deg 100% 36%) 33%,
-        hsl(337deg 100% 43%) 44%,
-        hsl(357deg 91% 59%) 56%,
-        hsl(17deg 100% 59%) 67%,
-        hsl(34deg 100% 53%) 78%,
-        hsl(45deg 100% 50%) 89%,
-        hsl(55deg 100% 50%) 100%
-    );
         opacity: 1; filter: blur(100px) brightness(2); border-radius: 9999px;
         height:50vh;
         width: 70vw;
@@ -91,8 +79,8 @@
     } 
     .sticker1{
         position: absolute;
-        bottom: 20px;
-        right: 20px;
+        bottom: 0;
+        right: 0;
         user-select: none;
         cursor: pointer;
         z-index: 2;
