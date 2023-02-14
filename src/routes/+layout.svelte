@@ -1,5 +1,6 @@
 <script>
     import '../app.css'
+    import { navigating } from '$app/stores';
     import Login from '$lib/login.svelte';
     let showModal = { showmodalLogin: false };
     const handleLoginClick = () => {
@@ -43,7 +44,10 @@
         </div>
 {/if}
 </div>
-
+{#if $navigating}
+<div class="loading">
+</div>
+{/if}
 </nav>
 </Headroom>
 
@@ -53,13 +57,44 @@
 <slot/>
 
 <style>
+    .loading {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        padding-bottom: 3px;
+        transition:all 0.3s ease;
+        animation: loading 1s linear;
+        background: linear-gradient(
+        45deg,
+        hsl(194, 100%, 50%) 0%,
+        hsl(180, 100%, 50%) 11%,
+        hsl(199, 100%, 27%) 22%,
+        hsl(329deg 100% 36%) 33%,
+        hsl(337deg 100% 43%) 44%,
+        hsl(357deg 91% 59%) 56%,
+        hsl(17deg 100% 59%) 67%,
+        hsl(34deg 100% 53%) 78%,
+        hsl(45deg 100% 50%) 89%,
+        hsl(55deg 100% 50%) 100%
+    );
+    }
+
+    @keyframes loading {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
     .logout{
         background: none;
         cursor: pointer;
         text-decoration: none;
         font-family: 'Grotesk-Bold', sans-serif;
         color: #f0ebe4;
-
     }
     nav{
         display: flex;

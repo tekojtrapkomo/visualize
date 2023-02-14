@@ -66,51 +66,51 @@
         font-size: 1rem;
     }
     .highlight-email {
-  font-family: 'Grotesk-Bold', sans-serif;
-  font-size: 1rem;
-  color: var(--off-white);
+        font-family: 'Grotesk-Bold', sans-serif;
+        font-size: 1rem;  
+        color: var(--off-white);
     }
     input {
-  background: none;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid rgb(107, 107, 107);
-  font-size: 24px;
-  width: 100%;
-  padding: 0.4em 0;
-  color: #fff;
-  margin-right: 0.4em;
-  transition: all 300ms ease-in-out;
-  font-weight: lighter;
-  font-family: 'Grotesk-Reg', sans-serif;
+        background: none;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid rgb(107, 107, 107);
+        font-size: 24px;
+        width: 100%;
+        padding: 0.4em 0;
+        color: #fff;
+        margin-right: 0.4em;
+        transition: all 300ms ease-in-out;
+        font-weight: lighter;
+        font-family: 'Grotesk-Reg', sans-serif;
 }
 input:focus{
-    border-bottom: 1px solid #e9e9e9;
+        border-bottom: 1px solid #e9e9e9;
 }
 input::placeholder{
-  color: rgb(158, 158, 158);
-  font-weight: lighter;
-  font-family: 'Grotesk-Reg', sans-serif;
-  font-size: 1.2rem;
+        color: rgb(158, 158, 158);
+        font-weight: lighter;
+        font-family: 'Grotesk-Reg', sans-serif;
+        font-size: 1.2rem;
 }
 
 .button2 {
-  background-color: greenyellow;
-  border-radius: 12px;
-  color: #000;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 10px 15px;
-  text-align: center;
-  transition: 200ms;
-  width: 100%;
-  box-sizing: border-box;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin: 2em 0;
+        background-color: greenyellow;
+        border-radius: 12px;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: center;
+        transition: 200ms;
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 16px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        margin: 2em 0;
 }
 
 .button2:not(:disabled):hover,
