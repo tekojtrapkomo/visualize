@@ -87,7 +87,6 @@
   cursor: context-menu;
 }
 .modal-content-login{
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -98,15 +97,14 @@
   margin: 0 5em;
 }
 .modal-content-register{
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 50%;
   width: 50%;
   color: whitesmoke;
-  margin: 0 5em;
+  margin: 0rem 5rem;
 }
 .modal-content-login h3{
   font-size: 3rem;

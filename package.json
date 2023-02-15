@@ -30,6 +30,7 @@
 	"dependencies": {
 		"@studio-freight/lenis": "^0.2.28",
 		"@sveltejs/adapter-vercel": "^2.0.2",
+		"browser-image-compression": "^2.0.0",
 		"motion": "^10.15.5",
 		"pocketbase": "^0.10.1",
 		"svelte-headroom": "^2.2.1",

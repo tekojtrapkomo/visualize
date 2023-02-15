@@ -27,8 +27,8 @@ export const load = () => {
 			throw error(err.status, err.message);
 		}
 };
-return {
-	topic: getTopic(),
-	gallery: getGallery()
-};
+		return {
+			topic: getTopic(),
+			gallery: getGallery()
+		};
  };
